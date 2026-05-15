@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Solitaire - ZeroGate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">جاري التحميل...</div>
+    </div>
+
+    <div id="game-wrapper">
+        <div id="top-bar">
+            <div class="stat-box">
+                <div class="stat-label">النقاط</div>
+                <div class="stat-value" id="score-display">0</div>
+            </div>
+            <button id="btn-new-game">لعبة جديدة</button>
+            <div class="stat-box">
+                <div class="stat-label">الوقت</div>
+                <div class="stat-value" id="time-display">0:00</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">الحركات</div>
+                <div class="stat-value" id="moves-display">0</div>
+            </div>
+        </div>
+
+        <div id="board">
+            <!-- Top Row: Stock + Waste + Foundations -->
+            <div id="top-row">
+                <div class="pile-group left-group">
+                    <div id="stock-pile" class="card-slot stock-slot">
+                        <div class="slot-icon">🔄</div>
+                    </div>
+                    <div id="waste-pile" class="card-slot waste-slot"></div>
+                </div>
+                <div class="pile-group right-group">
+                    <div class="foundation-slot card-slot" data-suit="hearts" data-foundation="0">
+                        <span class="slot-symbol">♥</span>
+                    </div>
+                    <div class="foundation-slot card-slot" data-suit="diamonds" data-foundation="1">
+                        <span class="slot-symbol">♦</span>
+                    </div>
+                    <div class="foundation-slot card-slot" data-suit="clubs" data-foundation="2">
+                        <span class="slot-symbol">♣</span>
+                    </div>
+                    <div class="foundation-slot card-slot" data-suit="spades" data-foundation="3">
+                        <span class="slot-symbol">♠</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tableau -->
+            <div id="tableau">
+                <div class="tableau-column" data-col="0"></div>
+                <div class="tableau-column" data-col="1"></div>
+                <div class="tableau-column" data-col="2"></div>
+                <div class="tableau-column" data-col="3"></div>
+                <div class="tableau-column" data-col="4"></div>
+                <div class="tableau-column" data-col="5"></div>
+                <div class="tableau-column" data-col="6"></div>
+            </div>
+        </div>
+    </div>
+
+    <button id="btn-auto-complete">إكمال تلقائي ✨</button>
+
+    <!-- Win Modal -->
+    <div id="win-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-title">🎉 مبروك!</div>
+            <p>لقد أكملت اللعبة بنجاح!</p>
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat-value" id="modal-score">0</div>
+                    <div class="modal-stat-label">النقاط</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-value" id="modal-time">0:00</div>
+                    <div class="modal-stat-label">الوقت</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-value" id="modal-moves">0</div>
+                    <div class="modal-stat-label">الحركات</div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-primary" id="btn-modal-new">لعبة جديدة</button>
+                <button class="modal-btn modal-btn-secondary" id="btn-modal-close">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Toast -->
+    <div id="achievement-toast" class="achievement-toast">
+        <span>🏆</span>
+        <span id="achievement-text">إنجاز جديد!</span>
+    </div>
+
+    <script src="zerogate-sdk.js"></script>
+    <script src="solitaire.js"></script>
+</body>
+</html>
